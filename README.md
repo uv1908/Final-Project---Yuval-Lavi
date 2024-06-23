@@ -1,2 +1,3 @@
-# Final-Project---Yuval-Lavi
-Final project as part of Full stack course at INT College
+# Project Details
+
+Based on website https://www.wwe.com
