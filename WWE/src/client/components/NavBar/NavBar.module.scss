@@ -1,0 +1,20 @@
+.navContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 97%;
+    height: 35px;
+    background-color: black;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.linksContainer, .userSpace {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}

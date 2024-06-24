@@ -1,0 +1,134 @@
+.userSpace {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    position: relative;
+
+    img {
+        background-color: transparent;
+        transition: background-color 0.3s;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    }
+}
+
+.verticalBreak {
+    width: 2px;
+    height: 36px;
+    margin-right: 16px;
+    background-color: #444;
+}
+
+.navigation-user-menu {
+    position: absolute;
+    top: 120%;
+    right: -50px;
+    display: none;
+    z-index: 10;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    width: 72px;
+    background-color: #222;
+    border-bottom-left-radius: 16px;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    min-width: 240px;
+    padding: 24px;
+    background-color: #333;
+    text-align: center;
+}
+
+.user-menu_signedin, .user-menu_signedout {
+    display: flex;
+    flex-direction: column;
+}
+
+.signin-button {
+    display: flex;
+    background-color: #666;
+    color: #FFF;
+    height: 40px;
+    border-radius: 4px;
+    cursor: pointer;
+
+    .logo {
+        display: flex;
+        justify-content: center;
+        width: 40px;
+        border-radius: 4px 0 0 4px;
+    }
+
+    .text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 8px 16px;
+        border-radius: 0 4px 4px 0;
+        letter-spacing: -0.0031em;
+        font-weight: 600;
+        font-size: 16px;
+        font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+        line-height: 21px;
+    }
+}
+
+.anchor {
+    color: #FFF;
+    line-height: 28px;
+    letter-spacing: -0.0023em;
+    font-size: 15px;
+    font-weight: 400;
+    text-decoration: underline;
+    cursor: pointer;
+    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+}
+
+.horizontal-divider {
+    height: 1px;
+    width: 100%;
+    margin: 16px 0 8px;
+    background-color: #222;
+}
+
+.no-account {
+    margin: 16px 0 8px;
+    color: #AAA;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: -0.0023em;
+    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+}
+
+.user-menu_signedout {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.user-email {
+    padding: 0 0 16px 0;
+    border-bottom: 1px solid #222;
+    color: #AAA;
+    line-height: 28px;
+    font-weight: 400;
+    font-size: 15px;
+    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+}
+
+.user-signout {
+    padding: 16px 0 0 0;
+    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 28px;
+}
