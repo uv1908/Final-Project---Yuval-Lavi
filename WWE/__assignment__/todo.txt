@@ -1,1 +1,2 @@
-after making user database remember to change UserSpace.tsx
+- After making user database, need to add user in SignUp.tsx, to check if user exist in SignIn.tsx 
+    and to fetch user in UserSpace.tsx

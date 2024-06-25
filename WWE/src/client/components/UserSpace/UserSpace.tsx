@@ -5,12 +5,14 @@ import signIn from '../../assets/sign_in.svg';
 import accountIcon from '../../assets/account.svg';
 import searchIcon from '../../assets/search.svg';
 import NetworkPromo from '../NetworkPromo/NetworkPromo';
+import SignIn from '../SignIn/SignIn';
 import styles from './UserSpace.module.scss';
 
 export default function UserSpace() {
     const [showPromo, setShowPromo] = useState(false);
     const [userMenu, setUserMenu] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [showSignIn, setShowSignIn] = useState(false);
 
     function handleMouseEnter() {
         setShowPromo(true);
@@ -24,6 +26,14 @@ export default function UserSpace() {
         setUserMenu(prev => !prev);
     }
 
+    function handleSignInClick() {
+        setShowSignIn(true);
+    }
+
+    function handleCloseSignIn() {
+        setShowSignIn(false);
+    }
+
     return (
         <div className={styles.userSpace}>
             <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} style={{ position: 'relative' }}>
@@ -34,27 +44,27 @@ export default function UserSpace() {
             <div onClick={handleClick} style={{ position: 'relative' }}>
                 <img src={accountIcon} alt='account' />
                 {userMenu && (
-                    <div className={styles['navigation-user-menu']} style={{ display: 'flex' }}>
+                    <div className={styles.navigationUserMenu} style={{ display: 'flex' }}>
                         <div className={styles.logo}>
                             <img src={wweLogo} alt="WWE" width="37" />
                         </div>
                         <div className={styles.actions}>
                             {isLoggedIn ? (
-                                <div className={styles['user-menu_signedout']} style={{ display: 'flex' }}>
-                                    <div className={styles['user-email']}>ADD EMAIL FROM DATABASE</div>
-                                    <div id="signout-button" className={`${styles.anchor} ${styles['user-signout']}`}>Sign Out</div>
+                                <div className={styles.userMenuSignedOut} style={{ display: 'flex' }}>
+                                    <div className={styles.userEmail}>ADD EMAIL FROM DATABASE</div>
+                                    <div className={`${styles.anchor} ${styles.userSignOut}`}>Sign Out</div>
                                 </div>
                             ) : (
-                                <div className={styles['user-menu_signedin']}>
-                                    <div className={styles['signin-button']}>
+                                <div className={styles.userMenuSignedIn}>
+                                    <div className={styles.signInButton} onClick={handleSignInClick}>
                                         <div className={styles.logo}>
                                             <img src={signIn} width="24" />
                                         </div>
                                         <div className={styles.text}>Sign in to WWE</div>
                                     </div>
-                                    <div className={styles['horizontal-divider']}></div>
-                                    <div className={styles['no-account']}>Don't have a WWE account?</div>
-                                    <div id="signup-button" className={styles.anchor}>Sign Up</div>
+                                    <div className={styles.horizontalDivider}></div>
+                                    <div className={styles.noAccount}>Don't have a WWE account?</div>
+                                    <div className={styles.anchor}>Sign Up</div>
                                 </div>
                             )}
                         </div>
@@ -62,6 +72,13 @@ export default function UserSpace() {
                 )}
             </div>
             <img src={searchIcon} alt='search' />
+
+            {showSignIn && (
+                <>
+                    <div className={styles.backdrop}></div>
+                    <SignIn onClose={handleCloseSignIn} />
+                </>
+            )}
         </div>
     );
 }

@@ -22,7 +22,7 @@
     background-color: #444;
 }
 
-.navigation-user-menu {
+.navigationUserMenu {
     position: absolute;
     top: 120%;
     right: -50px;
@@ -47,12 +47,12 @@
     text-align: center;
 }
 
-.user-menu_signedin, .user-menu_signedout {
+.userMenuSignedIn, .userMenuSignedOut {
     display: flex;
     flex-direction: column;
 }
 
-.signin-button {
+.signInButton {
     display: flex;
     background-color: #666;
     color: #FFF;
@@ -92,14 +92,14 @@
     font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
 }
 
-.horizontal-divider {
+.horizontalDivider {
     height: 1px;
     width: 100%;
     margin: 16px 0 8px;
     background-color: #222;
 }
 
-.no-account {
+.noAccount {
     margin: 16px 0 8px;
     color: #AAA;
     font-size: 13px;
@@ -109,13 +109,13 @@
     font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
 }
 
-.user-menu_signedout {
+.userMenuSignedOut {
     display: none;
     flex-direction: column;
     justify-content: center;
 }
 
-.user-email {
+.userEmail {
     padding: 0 0 16px 0;
     border-bottom: 1px solid #222;
     color: #AAA;
@@ -125,10 +125,25 @@
     font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
 }
 
-.user-signout {
+.userSignOut {
     padding: 16px 0 0 0;
     font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
     font-weight: 400;
     font-size: 15px;
     line-height: 28px;
+}
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    backdrop-filter: blur(5px);
+}
+
+.modalOpen {
+    filter: blur(5px);
 }

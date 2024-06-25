@@ -1,0 +1,150 @@
+.signInDialog {
+    display: flex;
+    position: fixed;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    flex-direction: column;
+    align-items: center;
+    width: 450px;
+    height: 480;
+    padding: 0;
+    background: #000000;
+    border-radius: 8px;
+    z-index: 1000;
+    opacity: 1;
+    animation: scalein .5s forwards cubic-bezier(0.87,0,0.13,1);
+    animation-delay: .4s;
+
+    header {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        padding: 16px;
+    }
+}
+
+img {
+    display: block;
+    height: auto;
+    border: 0;
+    max-width: 100%;
+}
+
+.close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    background-color: #222222;
+    border-radius: 50px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.signInForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 16px 40px 32px;
+    text-align: center;
+    overflow: scroll;
+    scrollbar-width: none;
+}
+
+.inputGroup {
+    position: relative;
+    width: 75%;
+    margin-bottom: 16px;
+}
+
+.input {
+    height: 20px;
+    width: 100%;
+    padding: 22px 16px 16px !important;
+    padding-right: 40px;
+    margin-bottom: 8px;
+    background: #222222;
+    border-radius: 4px;
+    border: none !important;
+    border-bottom: 4px solid transparent !important;
+    font-size: 20px !important;
+    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+    color: #FFF;
+}
+
+.inputError {
+    position: absolute;
+    left: 0;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 12px;
+    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+    line-height: 16px;
+    color: #E71F1F;
+}
+
+.inputVision {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.forgotPasswordButton {
+    margin: 24px 0 8px;
+    color: #FFF;
+    text-decoration: underline;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    cursor: pointer;
+    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+}
+
+.button.buttonPrimary {
+    background-color: #D0021B;
+    cursor: pointer;
+}
+
+.button.buttonPrimary:disabled {
+    background-color: #D0021B;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.signUpLabel {
+    margin-top: 32px;
+    margin-bottom: 8px;
+    color: #AAA;
+    font-weight: 400;
+    font-size: 14px;
+    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+    line-height: 28px;
+}
+
+.anchor {
+    color: #FFF;
+    line-height: 28px;
+    letter-spacing: -0.0023em;
+    font-size: 15px;
+    font-weight: 400;
+    text-decoration: underline;
+    cursor: pointer;
+    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+}
+
+.anchor.bold {
+    line-height: 22px;
+    font-weight: 700;
+    font-size: 16px;
+    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+    letter-spacing: -0.0023em;
+}
