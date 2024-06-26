@@ -6,6 +6,7 @@ import accountIcon from '../../assets/account.svg';
 import searchIcon from '../../assets/search.svg';
 import NetworkPromo from '../NetworkPromo/NetworkPromo';
 import SignIn from '../SignIn/SignIn';
+import SignUp from '../SignUp/SignUp';
 import styles from './UserSpace.module.scss';
 
 export default function UserSpace() {
@@ -13,6 +14,7 @@ export default function UserSpace() {
     const [userMenu, setUserMenu] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [showSignIn, setShowSignIn] = useState(false);
+    const [showSignUp, setShowSignUp] = useState(false);
 
     function handleMouseEnter() {
         setShowPromo(true);
@@ -32,6 +34,14 @@ export default function UserSpace() {
 
     function handleCloseSignIn() {
         setShowSignIn(false);
+    }
+
+    function handleSignUpClick() {
+        setShowSignUp(true);
+    }
+
+    function handleCloseSignUp() {
+        setShowSignUp(false);
     }
 
     return (
@@ -64,7 +74,7 @@ export default function UserSpace() {
                                     </div>
                                     <div className={styles.horizontalDivider}></div>
                                     <div className={styles.noAccount}>Don't have a WWE account?</div>
-                                    <div className={styles.anchor}>Sign Up</div>
+                                    <div className={styles.anchor} onClick={handleSignUpClick}>Sign Up</div>
                                 </div>
                             )}
                         </div>
@@ -77,6 +87,12 @@ export default function UserSpace() {
                 <>
                     <div className={styles.backdrop}></div>
                     <SignIn onClose={handleCloseSignIn} />
+                </>
+            )}
+            {showSignUp && (
+                <>
+                    <div className={styles.backdrop}></div>
+                    <SignUp onClose={handleCloseSignUp} />
                 </>
             )}
         </div>

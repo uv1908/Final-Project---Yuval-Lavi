@@ -1,0 +1,316 @@
+.signUpDialog {
+    display: flex;
+    position: fixed;
+    top: 50%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+    flex-direction: column;
+    align-items: center;
+    width: 450px;
+    height: 80vh;
+    padding: 0;
+    background: #000000;
+    border-radius: 8px;
+    z-index: 1000;
+    opacity: 1;
+    animation: scalein .5s forwards cubic-bezier(0.87,0,0.13,1);
+    animation-delay: .4s;
+
+    header {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        padding: 16px;
+    }
+}
+
+img {
+    display: block;
+    height: auto;
+    border: 0;
+    max-width: 100%;
+}
+
+.close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    background-color: #222222;
+    border-radius: 50px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.signUpForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 16px 40px 32px;
+    text-align: center;
+    overflow: scroll;
+    scrollbar-width: none;
+}
+
+.inputGroup {
+    position: relative;
+    width: 75%;
+    margin-bottom: 16px;
+}
+
+.input {
+    height: 20px;
+    width: 100%;
+    padding: 22px 16px 16px !important;
+    padding-right: 40px;
+    margin-bottom: 8px;
+    background: #222222;
+    border-radius: 4px;
+    border: none !important;
+    border-bottom: 4px solid transparent !important;
+    font-size: 20px !important;
+    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+    color: #FFF;
+}
+
+.inputError {
+    position: absolute;
+    left: 0;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 12px;
+    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+    line-height: 16px;
+    color: #E71F1F;
+}
+
+.inputVision {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.button.buttonPrimary {
+    background-color: #D0021B;
+    cursor: pointer;
+}
+
+.button.buttonPrimary:disabled {
+    background-color: #D0021B;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.signInLabel {
+    display: flex;
+    align-items: center;
+    margin-top: 32px;
+    color: #FFF;
+    font-weight: 400;
+    font-size: 16px;
+    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+    line-height: 28px;
+}
+
+.anchor {
+    color: #FFF;
+    line-height: 28px;
+    letter-spacing: -0.0023em;
+    font-size: 15px;
+    font-weight: 400;
+    text-decoration: underline;
+    cursor: pointer;
+    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+}
+
+.anchor.bold {
+    line-height: 22px;
+    font-weight: 700;
+    font-size: 16px;
+    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+    letter-spacing: -0.0023em;
+}
+
+.checkbox {
+    display: flex;
+    text-align: left;
+    width: 85%;
+
+    input[type="checkbox"] {
+        position: relative;
+        cursor: pointer;
+        width: 16px;
+        height: 16px;
+        background-color: #fff;
+        border: 2px solid #aaa;
+        border-radius: 4px;
+        outline: none;
+        transition: background-color 0.2s;
+    }
+    
+    label {
+        position: relative;
+        margin-top: 24px;
+        padding-left: 28px;
+        font-weight: 400;
+        font-size: 16px;
+        font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+        line-height: 21px;
+        letter-spacing: -0.0031em;
+        color: #AAAAAA;
+        user-select: none;
+
+        &::before {
+            position: absolute;
+            content: "";
+            left: 0;
+            top: 2px;
+            display: inline-block;
+            height: 16px;
+            width: 16px;
+            border: 2px solid #AAA;
+            border-radius: 4px;
+        }
+    }
+}
+
+// .checkbox .signUpConsent:checked + label::after {
+//     content: "";
+// }
+
+// .checkbox .signUpConsent + label::after {
+//     content: none;
+// }
+
+.checkbox label::after {
+    content: "";
+    display: inline-block;
+    left: 4px;
+    top: 2px;
+    height: 8px;
+    width: 14px;
+    border-left: 3px solid #D0021B;
+    border-bottom: 3px solid #D0021B;
+    transform: rotate(-45deg);
+    animation: checkin .25s ease-out;
+}
+
+.checkbox label::before, .checkbox label::after {
+    position: absolute;
+}
+
+.checkbox label {
+    position: relative;
+    margin-top: 24px;
+    padding-left: 28px;
+    font-weight: 400;
+    font-size: 16px;
+    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+    line-height: 21px;
+    letter-spacing: -0.0031em;
+    color: #AAAAAA;
+    user-select: none;
+}
+
+input[type="checkbox"] {
+    display: inline-block;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.checkboxLabel {
+    display: flex;
+    
+    a {
+        color: #FFF;
+        text-decoration: underline;
+    }
+}
+
+// .signUpConsent {
+//     position: absolute;
+//     opacity: 0;
+//     margin-right: 0;
+// }
+
+// .checkbox {
+//     display: flex;
+//     text-align: left;
+//     width: 70%;
+// }
+
+// .checkbox:focus-within label::before {
+//     outline: 2px solid blue;
+// }
+
+// .checkbox label {
+//     position: relative;
+//     margin-top: 24px;
+//     padding-left: 28px;
+//     font-weight: 400;
+//     font-size: 16px;
+//     font-family: -apple-system,BlinkMacSystemFont,avenir next,avenir,segoe ui,helvetica neue,helvetica,Cantarell,Ubuntu,roboto,noto,arial,sans-serif;
+//     line-height: 21px;
+//     letter-spacing: -0.0031em;
+//     color: #AAAAAA;
+//     user-select: none;
+// }
+
+// .checkbox label::before,.checkbox label::after {
+//     position: absolute;
+// }
+
+// .checkbox label::before {
+//     content: "";
+//     left: 0;
+//     top: 2px;
+//     display: inline-block;
+//     height: 16px;
+//     width: 16px;
+//     border: 2px solid #AAA;
+//     border-radius: 4px;
+// }
+
+// .checkbox label::after {
+//     content: "";
+//     display: inline-block;
+//     left: 4px;
+//     top: 2px;
+//     height: 8px;
+//     width: 14px;
+//     border-left: 3px solid #D0021B;
+//     border-bottom: 3px solid #D0021B;
+//     transform: rotate(-45deg);
+//     animation: checkin .25s ease-out;
+// }
+
+// .checkbox .signUpConsent:checked + label::after {
+//     content: "";
+// }
+
+// .checkbox .signUpConsent + label::after {
+//     content: none;
+// }
+
+// .checkbox label a {
+//     color: #FFF;
+//     text-decoration: underline;
+// }
+
+// .checkbox label a:hover {
+//     color: #bbb;
+// }
+
+// @keyframes checkin {
+//     50% {
+//         transform: scale(1.3);
+//     }
+// }
