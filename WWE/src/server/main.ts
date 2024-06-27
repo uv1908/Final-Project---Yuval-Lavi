@@ -1,12 +1,16 @@
 import express from "express";
 import ViteExpress from "vite-express";
+import superstarsRouter from "./routes/superstarsRoute.js";
+import { globalErrorHandler } from "./handlers/errorHandler.js";
+
+const app = express();
+app.use(express.json());
 
 const port = 3000;
-const app = express();
 
-app.get("/hello", (_, res) => {
-    res.send("Hello Vite + React + TypeScript!");
-});
+app.use("/api/superstars", superstarsRouter);
+
+app.use(globalErrorHandler);
 
 ViteExpress.listen(app, port, () =>
     console.log(`Server is listening on http://localhost:${port}`),

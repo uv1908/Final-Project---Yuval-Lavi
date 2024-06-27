@@ -3,14 +3,14 @@ import wweLogo from '../../assets/wwe_logo.svg';
 import exit from '../../assets/exit.svg';
 import toggleHide from '../../assets/toggle_hide.svg';
 import toggleShow from '../../assets/toggle_show.svg';
-import SignIn from '../SignIn/SignIn';
 import styles from './SignUp.module.scss'
 
 interface SignUpProps {
     onClose: () => void;
+    onSwitchToSignIn: () => void;
 }
 
-export default function SignUp({ onClose }: SignUpProps) {
+export default function SignUp({ onClose, onSwitchToSignIn }: SignUpProps) {
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -20,7 +20,6 @@ export default function SignUp({ onClose }: SignUpProps) {
     const [marketingConsentChecked, setMarketingConsentChecked] = useState(false);
     const [errors, setErrors] = useState({ email: ' ', password: ' ', firstName: ' ', lastName: ' ' });
     const [validated, setValidated] = useState(false);
-    const [showSignIn, setShowSignIn] = useState(false);
 
     useEffect(() => {
         setValidated(!errors.email && !errors.password && !errors.firstName && !errors.lastName && consentChecked && marketingConsentChecked);
@@ -68,17 +67,9 @@ export default function SignUp({ onClose }: SignUpProps) {
         setPasswordVisible(prev => !prev);
     }
 
-    function handleSignIn() {
-        setShowSignIn(true);
-    }
-
-    function handleCloseSignIn() {
-        setShowSignIn(false);
-    }
-
     return (
         <>
-            <dialog className={styles.signUpDialog} aria-modal={!showSignIn}>
+            <dialog className={styles.signUpDialog} aria-modal="true">
                 <header>
                     <img src={wweLogo} width="48" alt="WWE Logo" />
                     <div className={styles.close} onClick={onClose}>
@@ -176,17 +167,10 @@ export default function SignUp({ onClose }: SignUpProps) {
                     <button type="submit" className={`${styles.button} ${styles.buttonPrimary}`} disabled={!validated}>Create Account</button>
                     <div className={styles.signInLabel}>
                         Already have an account? <p style={{color: "black"}}>.....</p> 
-                        <div className={`${styles.anchor} ${styles.bold}`} tabIndex={0} onClick={handleSignIn}>Sign In</div>
+                        <div className={`${styles.anchor} ${styles.bold}`} tabIndex={0} onClick={onSwitchToSignIn}>Sign In</div>
                     </div>
                 </form>
             </dialog>
-
-            {showSignIn && (
-                <>
-                    <div className={styles.backdrop}></div>
-                    <SignIn onClose={handleCloseSignIn} />
-                </>
-            )}
         </>
     )
 }

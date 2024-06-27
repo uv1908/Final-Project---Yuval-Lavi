@@ -30,6 +30,7 @@ export default function UserSpace() {
 
     function handleSignInClick() {
         setShowSignIn(true);
+        setShowSignUp(false);
     }
 
     function handleCloseSignIn() {
@@ -38,6 +39,7 @@ export default function UserSpace() {
 
     function handleSignUpClick() {
         setShowSignUp(true);
+        setShowSignIn(false);
     }
 
     function handleCloseSignUp() {
@@ -86,13 +88,13 @@ export default function UserSpace() {
             {showSignIn && (
                 <>
                     <div className={styles.backdrop}></div>
-                    <SignIn onClose={handleCloseSignIn} />
+                    <SignIn onClose={handleCloseSignIn} onSwitchToSignUp={handleSignUpClick} />
                 </>
             )}
             {showSignUp && (
                 <>
                     <div className={styles.backdrop}></div>
-                    <SignUp onClose={handleCloseSignUp} />
+                    <SignUp onClose={handleCloseSignUp} onSwitchToSignIn={handleSignInClick} />
                 </>
             )}
         </div>

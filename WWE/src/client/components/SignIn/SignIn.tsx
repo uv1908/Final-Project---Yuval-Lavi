@@ -3,20 +3,19 @@ import wweLogo from '../../assets/wwe_logo.svg';
 import exit from '../../assets/exit.svg';
 import toggleHide from '../../assets/toggle_hide.svg';
 import toggleShow from '../../assets/toggle_show.svg';
-import SignUp from '../SignUp/SignUp';
 import styles from './SignIn.module.scss';
 
 interface SignInProps {
     onClose: () => void;
+    onSwitchToSignUp: () => void;
 }
 
-export default function SignIn({ onClose }: SignInProps) {
+export default function SignIn({ onClose, onSwitchToSignUp }: SignInProps) {
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState({ email: ' ', password: ' ' });
     const [validated, setValidated] = useState(false);
-    const [showSignUp, setShowSignUp] = useState(false);
 
     useEffect(() => {
         setValidated(!errors.email && !errors.password);
@@ -47,17 +46,9 @@ export default function SignIn({ onClose }: SignInProps) {
         }
     }
 
-    function handleSignUp() {
-        setShowSignUp(true);
-    }
-
-    function handleCloseSignUp() {
-        setShowSignUp(false);
-    }
-
     return (
         <>
-            <dialog className={styles.signInDialog} aria-modal={!showSignUp} open>
+            <dialog className={styles.signInDialog} aria-modal="true" open>
                 <header>
                     <img src={wweLogo} width="48" alt="WWE Logo" />
                     <div className={styles.close} onClick={onClose}>
@@ -109,16 +100,9 @@ export default function SignIn({ onClose }: SignInProps) {
                     </button>
 
                     <div className={styles.signUpLabel}>Don't have a WWE account?</div>
-                    <div className={`${styles.anchor} ${styles.bold}`} tabIndex={0} onClick={handleSignUp}>Sign Up</div>
+                    <div className={`${styles.anchor} ${styles.bold}`} tabIndex={0} onClick={onSwitchToSignUp}>Sign Up</div>
                 </form>
             </dialog>
-
-            {showSignUp && (
-                <>
-                    <div className={styles.backdrop}></div>
-                    <SignUp onClose={handleCloseSignUp} />
-                </>
-            )}
         </>
     );
 };
