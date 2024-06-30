@@ -11,6 +11,17 @@ export async function getChampions(req: Request, res: Response, next: NextFuncti
     return res.send({ superstars });
 }
 
+// export async function getById(req: Request, res: Response, next: NextFunction) {
+//     const { id } = req.params;
+
+//     if(id) {
+//         const superstarId = parseInt(id, 10);
+//         const superstar = await getSuperstar(superstarId);
+//         const brand = await getBrandById(superstar.brand_id);
+//         return res.send({ superstar, brand });
+//     }
+// }
+
 export async function getCurrent(req: Request, res: Response, next: NextFunction) {
     const superstars = await getCurrentSuperstars();
     return res.send({ superstars });

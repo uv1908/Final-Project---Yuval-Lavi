@@ -1,0 +1,31 @@
+.headerImg {
+    margin-top: 30px;
+}
+
+.superstarsDiv {
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    color: #a2a8ab;
+    font-size: larger;
+    align-self: start;
+
+    span {
+        color: #000;
+    }
+}
+
+.champions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.all {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}

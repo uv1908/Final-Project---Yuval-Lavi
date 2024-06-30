@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import NavBarWrapper from "../layout/NavBarWrapper/NavBarWrapper";
 import Home from "../pages/Home/Home";
-import News from "../pages/News/News";
 import Shows from "../pages/Shows/Shows";
 import Superstars from "../pages/Superstars/Superstars";
+import SuperstarPage from "../components/SuperstarPage/SuperstarPage";
 
 
 const router = createBrowserRouter([{
@@ -11,7 +11,7 @@ const router = createBrowserRouter([{
     element: <NavBarWrapper />,
     children: [
         { path: "", element: <Home /> },
-        { path: "/news", element: <News /> },
+        { path: "/superstar/:id", element: <SuperstarPage /> },
         { path: "/Shows", element: <Shows /> },
         { path: "/Superstars", element: <Superstars /> },
     ]

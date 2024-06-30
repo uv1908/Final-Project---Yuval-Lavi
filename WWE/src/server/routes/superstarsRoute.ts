@@ -12,5 +12,6 @@ router
     .get("/smackdown", getFromSmackdown)
     .get("/hof", getHallOfFame)
     .get("/alumni", getAlumni)
+    // .get("/:id", getById)
 
 export default router;

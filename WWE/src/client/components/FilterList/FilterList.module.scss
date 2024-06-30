@@ -1,0 +1,57 @@
+.filterBox {
+    position: relative;
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+    user-select: none;
+    font-family: Arial, sans-serif;
+    width: fit-content;
+
+    .current {
+        text-transform: uppercase;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: bold;
+        padding: 5px 10px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .options {
+        list-style-type: none;
+        padding: 0;
+        position: absolute;
+        top: calc(100% + 5px);
+        left: 0;
+        background-color: #000;
+        border-top: none;
+        border-radius: 0 0 5px 5px;
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.3s ease, border 0.3s ease;
+        z-index: 1;
+        width: 100%;
+        font-weight: bold;
+    }
+
+    &.open .options {
+        max-height: 150px;
+        overflow-y: auto;
+    }
+
+    .superstar-search--option {
+        padding: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: #333;
+        }
+    }
+
+    .arrow {
+        margin-left: 5px;
+    }
+}

@@ -1,0 +1,22 @@
+.searchDiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.filters {
+    display: flex;
+    align-items: center;
+}
+
+h3 {
+    margin: 0;
+    color: #a2a8ab;
+    font-size: larger;
+    align-self: start;
+
+    span {
+        color: #000;
+    }
+}

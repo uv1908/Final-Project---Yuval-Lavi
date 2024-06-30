@@ -1,5 +1,6 @@
 import Superstar from "./superstar.js";
 import { runSelect, runModify } from "./dbUtils.js";
+import Brand from "./brand.js";
 
 const rawId = 1;
 const smackdownId = 2;
@@ -8,12 +9,12 @@ const alumniId = 4;
 
 async function getSuperstarsByBrand(...brandIds: number[]): Promise<Superstar[]> {
     const placeholders = brandIds.map(() => 'brand_id = ?').join(' OR ');
-    const query = `SELECT * FROM superstars WHERE ${placeholders}`;
+    const query = `SELECT * FROM superstars WHERE ${placeholders} ORDER BY name`;
     return runSelect<Superstar>(query, brandIds);
 }
 
 export async function getAllSuperstars() {
-    return runSelect<Superstar>("SELECT * FROM superstars");
+    return runSelect<Superstar>("SELECT * FROM superstars ORDER BY name");
 }
 
 export async function getAllChampions() {
@@ -23,6 +24,11 @@ export async function getAllChampions() {
 // export async function getSuperstar(id: number) {
 //     const [superstar] = await runSelect<Superstar>("SELECT * FROM superstars WHERE id = ?", id);
 //     return superstar;
+// }
+
+// export async function getBrandById(id: number) {
+//     const [brand] = await runSelect<Brand>("SELECT * FROM brands WHERE id = ?", id);
+//     return brand;
 // }
 
 export async function getCurrentSuperstars(): Promise<Superstar[]> {
