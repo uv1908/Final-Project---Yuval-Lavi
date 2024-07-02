@@ -1,11 +1,15 @@
-import React from 'react';
 import "../../App.css";
-import wweLogo from "../../assets/wwe_logo.svg";
+import RawNews from '../../components/RawNews/RawNews';
+import SmackdownNews from "../../components/SmackdownNews/SmackdownNews";
 
 export default function Home() {
     return (
         <>
-            <h1>Home</h1>
+            <RawNews />
+            <br />
+            <br />
+            <br />
+            <SmackdownNews />
         </>
     )
 }

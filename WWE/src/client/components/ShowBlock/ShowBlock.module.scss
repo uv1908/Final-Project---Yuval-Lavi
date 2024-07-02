@@ -1,0 +1,63 @@
+.brandDiv {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    background-color: #000;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.headerImg {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    transition: all 1.5s ease-in-out;
+    
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+.brandImg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 200px;
+    width: 250px;
+}
+
+.showInfo {
+    position: absolute;
+    top: calc(50% + 50px);
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
+    font-size: 1.7rem;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+    margin-top: 100px;
+    display: inline-block;
+}
+
+.usaNetwork {
+    background-image: url('https://wwe.com/f/2019/12/usa--a55be57f037ddc89bfd46462de3447e5.svg');
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 50px;
+    height: 20px;
+    vertical-align: middle;
+    background-size: contain;
+}
+
+.foxNetwork {
+    background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ec545603-cf4e-48e0-936d-5376ea12fdc0/dfoqfin-c8d16119-f7b9-4925-a9ef-8e4065ffddab.png/v1/fill/w_1280,h_571/wcw_fox_logo_png_2023_by_wcwjunkbox_dfoqfin-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTcxIiwicGF0aCI6IlwvZlwvZWM1NDU2MDMtY2Y0ZS00OGUwLTkzNmQtNTM3NmVhMTJmZGMwXC9kZm9xZmluLWM4ZDE2MTE5LWY3YjktNDkyNS1hOWVmLThlNDA2NWZmZGRhYi5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.Zk6FPF-SOd0x5N1Bv_z5NL4zWZb3stNw4gQ4NEcOEv4');
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 50px;
+    height: 20px;
+    vertical-align: middle;
+    background-size: contain;
+}

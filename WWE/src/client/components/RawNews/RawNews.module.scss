@@ -1,0 +1,177 @@
+.raw {
+    margin-top: 30px;
+
+    .results {
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .header {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 10px;
+        
+        .logo {
+            background-color: #ff0000;
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .social {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            .facebook {
+                color: #97929278;
+                margin: 0 10px;
+                font-size: 2.5rem;
+            
+                &:hover {
+                    color: #3b5998;
+                }
+            }
+            
+            .twitter {
+                color: #97929278;
+                margin: 0 10px;
+                font-size: 2.5rem;
+            
+                &:hover {
+                    color: #1da1f2;
+                }
+            }
+        }
+    }
+
+    .mainImage {
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+    
+    .mainText {
+        text-align: left;
+
+        .headline {
+            display: inline-block;
+            max-width: calc(100% - 40px);
+            border-bottom: 3px solid #fff;
+            padding-bottom: 3px;
+        }
+
+        background-color: #ff0000;
+        color: #fff;
+        padding: 20px;
+
+        h1 {
+            margin-top: 10px;
+            font-size: 2rem;
+        }
+
+        .buttons {
+            display: flex;
+            bottom: 0;
+            width: 100%;
+            gap: 2px;
+
+            .button {
+                flex: 1;
+                background-color: #b20404;
+                color: #fff;
+                border: none;
+                padding: 10px;
+                font-size: 1rem;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+
+                &:hover {
+                    background-color: #8a0303;
+                }
+            }
+        }
+    }
+    
+    .videos {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+        gap: 30px;
+
+        .video {
+            position: relative;
+            width: 100%;
+            height: 205px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+
+            .overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: #fff;
+
+                span {
+                    position: absolute;
+                    top: 10px;
+                    left: 10px;
+                    background: rgba(0, 0, 0, 0.7);
+                    padding: 5px 10px;
+                    border-radius: 5px;
+                    font-size: 1rem;
+                }
+
+                .playButton {
+                    background: none;
+                    border: none;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+
+                    img {
+                        width: 50px;
+                        height: 50px;
+                    }
+                }
+            }
+
+            button {
+                background: none;
+                border: none;
+                color: #fff;
+                font-size: 2rem;
+                cursor: pointer;
+            }
+
+            &.videoPlaying {
+                width: 100%;
+                height: auto;
+            }
+                
+            iframe {
+                width: 100%;
+                height: 405px;
+            }
+            
+            p {
+                margin: 10px 0 0;
+            }
+        }
+    }
+}
