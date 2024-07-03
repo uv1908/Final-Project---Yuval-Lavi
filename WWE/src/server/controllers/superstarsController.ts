@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { getAllChampions, getAllSuperstars, getAlumniSuperstars, getCurrentSuperstars, getHoFSuperstars, getRawSuperstars, getSmackdownSuperstars } from '../database/superstarsQueries.js';
+import { getAllChampions, getAllSuperstars, getAlumniSuperstars, getCurrentSuperstars, getHoFSuperstars, getRawSuperstars, getSmackdownSuperstars, getSuperstar, getSuperstarWithBrand } from '../database/superstarsQueries.js';
 
 export async function getAll(req: Request, res: Response, next: NextFunction) {
     const superstars = await getAllSuperstars();
@@ -11,16 +11,15 @@ export async function getChampions(req: Request, res: Response, next: NextFuncti
     return res.send({ superstars });
 }
 
-// export async function getById(req: Request, res: Response, next: NextFunction) {
-//     const { id } = req.params;
+export async function getById(req: Request, res: Response, next: NextFunction) {
+    const { id } = req.params;
 
-//     if(id) {
-//         const superstarId = parseInt(id, 10);
-//         const superstar = await getSuperstar(superstarId);
-//         const brand = await getBrandById(superstar.brand_id);
-//         return res.send({ superstar, brand });
-//     }
-// }
+    if(id) {
+        const superstarId = parseInt(id, 10);
+        const superstar = await getSuperstarWithBrand(superstarId);
+        return res.json(superstar);
+    }
+}
 
 export async function getCurrent(req: Request, res: Response, next: NextFunction) {
     const superstars = await getCurrentSuperstars();

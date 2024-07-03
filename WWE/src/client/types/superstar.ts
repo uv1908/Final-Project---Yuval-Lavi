@@ -9,4 +9,6 @@ export default interface Superstar {
     img_url: string;
     title: string;
     brand_id: number;
+    brand_name?: string;
+    brand_img_url?: string;
 }

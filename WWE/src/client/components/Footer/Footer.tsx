@@ -1,65 +1,61 @@
+import wweLogo from '../../assets/wwe_logo.svg';
+import OutsideNavLink from '../OutsideNavLink/OutsideNavLink';
+import styles from './Footer.module.scss';
 
 export default function Footer() {
     return (
-        <div data-wname="distributed_footer" data-pos="2" className="panel-pane pane-distributed-footer">
-            <div className="wwe-footer-navigation wwe-breaker--wrapper addFooterCookiePreferencesEvent-processed analytics-breaker-view-processed">
-                <div className="wwe-footer-navigation-content-wrapper">
-                    <div className="mobile-column-wrapper">
-                        
-                        <div className="footer-menu-wrapper">
-                            <div className="footer-menu-label">Corporate</div>
-                            <ul className="footer-menu">
-                                <li><a href="https://corporate.wwe.com/">Corporate</a></li>
-                                <li><a href="https://corporate.wwe.com/careers/careers-overview">Careers</a></li>
-                                <li><a href="https://corporate.wwe.com/impact">Impact</a></li>
-                                <li><a href="/main-help/contact-us">Contact</a></li>
+        <div className={styles.footer}>
+            <div className={styles.footerNavigation}>
+                <div className={styles.footerNavigationWrapper}>
+                    <div className={styles.columnWrapper}>
+                        <div className={styles.menuWrapper}>
+                            <div className={styles.menuLabel}>Corporate</div>
+                            <ul className={styles.menu}>
+                                <li><OutsideNavLink to="https://corporate.wwe.com/" className={styles.link}>Corporate</OutsideNavLink></li>
+                                <li><OutsideNavLink to="https://corporate.wwe.com/careers/careers-overview" className={styles.link}>Careers</OutsideNavLink></li>
+                                <li><OutsideNavLink to="https://corporate.wwe.com/impact" className={styles.link}>Impact</OutsideNavLink></li>
+                                <li><OutsideNavLink to="https://www.wwe.com/main-help/contact-us" className={styles.link}>Contact</OutsideNavLink></li>
                             </ul>
                         </div>
-                        
-                        <div className="footer-menu-wrapper">
-                            <div className="footer-menu-label">WWE.com</div>
-                            <ul className="footer-menu">
-                                <li><a href="/news">WWE News</a></li>
-                                <li><a href="/videos">WWE Videos</a></li>
-                                <li><a href="/photos">WWE Photos</a></li>
-                                <li><a href="/worldwide">WWE Worldwide</a></li>
-                                <li><a href="https://onlocationexp.com/wwe?utm_source=wwe.com&utm_medium=referral&utm_campaign=wwe-footer">Priority Pass</a></li>
+                        <div className={styles.menuWrapper}>
+                            <div className={styles.menuLabel}>WWE.com</div>
+                            <ul className={styles.menu}>
+                                <li><OutsideNavLink to="https://www.wwe.com/news/" className={styles.link}>WWE News</OutsideNavLink></li>
+                                <li><OutsideNavLink to="https://www.wwe.com/videos/" className={styles.link}>WWE Videos</OutsideNavLink></li>
+                                <li><OutsideNavLink to="https://www.wwe.com/photos" className={styles.link}>WWE Photos</OutsideNavLink></li>
+                                <li><OutsideNavLink to="https://www.wwe.com/worldwide" className={styles.link}>WWE Worldwide</OutsideNavLink></li>
+                                <li><OutsideNavLink to="https://onlocationexp.com/wwe?utm_source=wwe.com&utm_medium=referral&utm_campaign=wwe-footer" className={styles.link}>Priority Pass</OutsideNavLink></li>
                             </ul>
                         </div>
-                        
-                        <div className="footer-menu-wrapper">
-                            <div className="footer-menu-label">About</div>
-                            <ul className="footer-menu">
-                                <li><a href="/page/privacy-policy">Privacy Policy</a></li>
-                                <li><a href="/main-help/generalfaq/copyright">Copyright</a></li>
-                                <li><a href="/page/terms-and-conditions">Terms of Use</a></li>
-                                <li><a href="/#">Cookie Preferences</a></li>
-                                <li><a href="https://www.wwe.com/page/do-not-sell-form">Do Not Sell or Share My Info</a></li>
+                        <div className={styles.menuWrapper}>
+                            <div className={styles.menuLabel}>About</div>
+                            <ul className={styles.menu}>
+                                <li><OutsideNavLink to="https://www.wwe.com/page/privacy-policy" className={styles.link}>Privacy Policy</OutsideNavLink></li>
+                                <li><OutsideNavLink to="https://www.wwe.com/main-help/generalfaq/copyright" className={styles.link}>Copyright</OutsideNavLink></li>
+                                <li><OutsideNavLink to="https://www.wwe.com/page/terms-and-conditions" className={styles.link}>Terms of Use</OutsideNavLink></li>
+                                <li><OutsideNavLink to="https://www.wwe.com/#" className={styles.link}>Cookie Preferences</OutsideNavLink></li>
+                                <li><OutsideNavLink to="https://www.wwe.com/page/do-not-sell-form" className={styles.link}>Do Not Sell or Share My Info</OutsideNavLink></li>
                             </ul>
                         </div>
-                        
-                        <div className="footer-menu-wrapper">
-                            <div className="footer-menu-label">Help</div>
-                            <ul className="footer-menu">
-                                <li><a href="/page/security-policy">Security</a></li>
-                                <li><a href="https://help.wwe.com/">Help Center</a></li>
-                                <li><a href="http://www.wwe.com/redeem">Redeem Gift Card</a></li>
-                                <li><a href="/page/cookie-policy">Cookie Policy</a></li>
-                                <li><a href="https://help.wwe.com/Answer/Detail/18?utm_source=dotcom&utm_medium=web&utm_campaign=closed_captions&utm_content=footer_link">Closed Captions</a></li>
+                        <div className={styles.menuWrapper}>
+                            <div className={styles.menuLabel}>Help</div>
+                            <ul className={styles.menu}>
+                                <li><OutsideNavLink to="https://www.wwe.com/page/security-policy" className={styles.link}>Security</OutsideNavLink></li>
+                                <li><OutsideNavLink to="https://help.wwe.com/" className={styles.link}>Help Center</OutsideNavLink></li>
+                                <li><OutsideNavLink to="http://www.wwe.com/redeem" className={styles.link}>Redeem Gift Card</OutsideNavLink></li>
+                                <li><OutsideNavLink to="https://www.wwe.com/page/cookie-policy" className={styles.link}>Cookie Policy</OutsideNavLink></li>
+                                <li><OutsideNavLink to="https://help.wwe.com/Answer/Detail/18?utm_source=dotcom&utm_medium=web&utm_campaign=closed_captions&utm_content=footer_link" className={styles.link}>Closed Captions</OutsideNavLink></li>
                             </ul>
                         </div>
-                        
-                        <div className="footer-menu-wrapper">
-                            <div className="footer-menu-label">Global Sites</div>
-                            <ul className="footer-menu">
-                                <li><a href="https://arabic.wwe.com/" target="_blank" rel="noopener noreferrer">Arabic</a></li>
+                        <div className={styles.menuWrapper}>
+                            <div className={styles.menuLabel}>Global Sites</div>
+                            <ul className={styles.menu}>
+                                <li><OutsideNavLink to="https://arabic.wwe.com/" className={styles.link}>Arabic</OutsideNavLink></li>
                             </ul>
                         </div>
-                        
                     </div>
-    
-                    <div className="footer-logo">
-                        <img src="/sites/all/modules/custom/wwe_global_panes/assets/img/wwe_logo.svg" alt="WWE Logo" />
+                    <div className={styles.logo}>
+                        <img src={wweLogo} alt="WWE Logo" />
                     </div>
                 </div>
             </div>

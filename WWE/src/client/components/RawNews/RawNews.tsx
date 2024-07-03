@@ -43,7 +43,7 @@ export default function RawNews() {
                             <>
                                 <img src="https://www.wwe.com/f/styles/wwe_16_9_l/public/2024/07/dchiraw1623_04_ntwk_rev_1--f3bc4cc93bacc0fdb3de1b6300b71578.jpg" alt="Dirty Dom's disruption helps Liv Morgan" />
                                 <div className={styles.overlay}>
-                                    <span>02:57</span>
+                                    <span>03:07</span>
                                     <button className={styles.playButton}><img src={playButton} /></button>
                                 </div>
                                 <p>"Dirty" Dom's disruption helps Liv Morgan</p>
@@ -66,7 +66,7 @@ export default function RawNews() {
                             <>
                                 <img src="https://www.wwe.com/f/styles/wwe_16_9_l/public/2024/07/dchiraw1623_05_ntwk_rev_1--7ab5df493f47dc53030542f422faec04.jpg" alt="Damian Priest chokeslams Seth Rollins" />
                                 <div className={styles.overlay}>
-                                    <span>02:59</span>
+                                    <span>03:10</span>
                                     <button className={styles.playButton}><img src={playButton} /></button>
                                 </div>
                                 <p>Damian Priest chokeslams Seth Rollins</p>
@@ -89,10 +89,10 @@ export default function RawNews() {
                             <>
                                 <img src="https://www.wwe.com/f/styles/wwe_16_9_l/public/2024/07/dchiraw1623_07_ntwk_rev_1--ea5cfead1f4b460e5e9999c0f685c186.jpg" alt="Bo Dallas to Uncle Howdy: 'I set them free'" />
                                 <div className={styles.overlay}>
-                                    <span>04:59</span>
+                                    <span>04:39</span>
                                     <button className={styles.playButton}><img src={playButton} /></button>
                                 </div>
-                                <p>Bo Dallas to Uncle Howdy: "I set them free</p>
+                                <p>Bo Dallas to Uncle Howdy: "I set them free"</p>
                             </>
                         ) : (
                             <iframe

@@ -109,6 +109,7 @@
             height: 205px;
             cursor: pointer;
             transition: all 0.3s ease;
+            border-bottom: 5px solid #ff0000;
 
             img {
                 width: 100%;
@@ -162,6 +163,7 @@
             &.videoPlaying {
                 width: 100%;
                 height: auto;
+                border-bottom: none;
             }
                 
             iframe {
@@ -171,6 +173,9 @@
             
             p {
                 margin: 10px 0 0;
+                font-weight: bold;
+                font-size: x-large;
+                text-align: left;
             }
         }
     }

@@ -21,10 +21,20 @@ export async function getAllChampions() {
     return runSelect<Superstar>("SELECT * FROM superstars WHERE title IS NOT NULL AND title != ''");
 }
 
-// export async function getSuperstar(id: number) {
-//     const [superstar] = await runSelect<Superstar>("SELECT * FROM superstars WHERE id = ?", id);
-//     return superstar;
-// }
+export async function getSuperstar(id: number) {
+    const [superstar] = await runSelect<Superstar>("SELECT * FROM superstars WHERE id = ?", id);
+    return superstar;
+}
+
+export async function getSuperstarWithBrand(id: number) {
+    const [superstar] = await runSelect(`
+        SELECT s.*, b.name AS brand_name, b.img_url AS brand_img_url 
+        FROM superstars s
+        JOIN brands b ON s.brand_id = b.id
+        WHERE s.id = ?
+    `, id);
+    return superstar;
+}
 
 // export async function getBrandById(id: number) {
 //     const [brand] = await runSelect<Brand>("SELECT * FROM brands WHERE id = ?", id);

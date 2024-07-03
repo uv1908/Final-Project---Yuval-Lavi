@@ -5,6 +5,7 @@ import Shows from "../pages/Shows/Shows";
 import Superstars from "../pages/Superstars/Superstars";
 import Raw from "../pages/Raw/Raw";
 import Smackdown from "../pages/Smackdown/Smackdown";
+import SuperstarPage from "../pages/SuperstarPage/SuperstarPage";
 
 
 const router = createBrowserRouter([{
@@ -16,6 +17,7 @@ const router = createBrowserRouter([{
         { path: "/Shows/raw", element: <Raw /> },
         { path: "/Shows/smackdown", element: <Smackdown /> },
         { path: "/Superstars", element: <Superstars /> },
+        { path: "/Superstars/:id", element: <SuperstarPage /> },
     ]
 }]);
 
