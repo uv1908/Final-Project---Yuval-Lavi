@@ -3,7 +3,7 @@ import React from 'react';
 interface OutsideNavLinkProps {
     to: string;
     children: React.ReactNode;
-    className: string;
+    className?: string;
 }
 
 export default function OutsideNavLink({ to, children, className }: OutsideNavLinkProps) {

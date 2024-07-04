@@ -20,7 +20,7 @@ export default function SuperstarPage() {
                 }
 
                 const data = await response.json();
-                setSuperstar(data); // Assuming data is the fetched superstar object
+                setSuperstar(data);
             } catch (err) {
                 console.error('Error fetching superstar:', err);
             }
@@ -29,9 +29,15 @@ export default function SuperstarPage() {
         fetchSuperstarDetails();
     }, [id]);
 
+    // useEffect(() => console.log(isStatsOpen), [isStatsOpen]);
+
     function toggleStats() {
-        console.log('Toggle Stats Button Clicked');
-        setIsStatsOpen(!isStatsOpen);
+        // console.log('Toggle Stats Button Clicked');
+        setIsStatsOpen(prev => !prev);
+    }
+
+    function closeStats() {
+        setIsStatsOpen(false);
     }
 
     if (!superstar) {
@@ -43,7 +49,9 @@ export default function SuperstarPage() {
             <div className={styles.superstarContent}>
                 <img src={superstar.img_url} alt={superstar.name} className={styles.superstarImg} />
                 <div className={styles.infoContainer}>
-                    <img src={superstar.brand_img_url} alt={superstar.brand_name} className={styles.brandImg} />
+                    {superstar.brand_name != "Alumni" && (
+                        <img src={superstar.brand_img_url} alt={superstar.brand_name} className={styles.brandImg} />
+                    )}
                     <div className={styles.nameAndTitle}>
                         <h1 className={styles.name}>{superstar.name}</h1>
                         <h2 className={styles.title}>{superstar.title}</h2>
@@ -60,7 +68,7 @@ export default function SuperstarPage() {
                     <button onClick={toggleStats} className={styles.statsButton}>Superstar Stats</button>
                 </div>
                 {isStatsOpen && (
-                    <SuperstarStats superstar={superstar} />
+                    <SuperstarStats superstar={superstar} onClose={closeStats} />
                 )}
             </div>
         </div>

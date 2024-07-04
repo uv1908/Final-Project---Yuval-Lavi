@@ -1,71 +1,95 @@
 .statsContainer {
     position: fixed;
     top: 0;
-    right: -100%;
-    width: 80%;
+    right: 0;
+    width: 70%;
     height: 100%;
-    background-color: #fff;
+    background-color: #000;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    font-family: "Roboto", "Verdana", "Arial", sans-serif;
+    text-align: left;
+    color: #FFF;
     transition: right 0.3s ease;
     overflow-y: auto;
     z-index: 1000;
-  }
-  
-  .statsContainer.open {
-    right: 0;
-  }
-  
-  .statsHeader {
+}
+
+.statsHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px;
-    background-color: #ff0000;
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  .statsName {
+    padding: 20px;
+    background-color: #000;
+    color: #FFF;
+    border-bottom: 1px solid #3d4444;
+}
+
+.statsName {
     display: flex;
     flex-direction: column;
-  }
-  
-  .dataBig {
-    font-size: 1.5rem;
+}
+
+h4 {
+    font-family: "Roboto";
+    font-size: 16px;
+    font-weight: normal;
+    letter-spacing: 0.05em;
+}
+
+.dataBig {
     margin: 0;
-  }
-  
-  .statsSocial ul {
+    font-family: "Roboto", "Verdana", "Arial", sans-serif;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    line-height: 1.15;
+
+    span {
+        font-size: x-small;
+        text-transform: lowercase !important;
+    }
+}
+
+.statsSocial ul {
     list-style: none;
     padding: 0;
     margin: 0;
-  }
-  
-  .statsSocial ul li {
+    text-align: left;
+}
+
+.statsSocial ul li {
     margin: 0;
-  }
-  
-  .statsProfile {
+}
+
+.statsProfile {
     display: flex;
-    padding: 15px;
-  }
-  
-  .statsProfileLeft,
-  .statsProfileRight {
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.statsProfileLeft, .statsProfileRight {
     flex: 1;
-    padding: 15px;
-  }
-  
-  .statsProfileItem {
-    margin-bottom: 20px;
-  }
-  
-  .dataSmall {
-    font-size: 1rem;
+}
+
+.statsProfileRight .statsProfileItem {
+    border-top: 1px solid #3d4444;
+    border-bottom: none;
+}
+
+.statsProfileItem {
+    border-bottom: 1px solid #3d4444;
+    padding: 0 0 7px;
+}
+
+.dataSmall {
     margin: 0;
-  }
-  
-  .closeButton {
+    font-family: "Roboto", "Verdana", "Arial", sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.25em;
+    letter-spacing: normal;
+}
+
+.closeButton {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -73,73 +97,11 @@
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
-    color: #ff0000;
-  }
+    color: #FFF;
+}
 
-  
-  .superstarStats {
-    position: fixed;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 300px;
-    background: white;
-    z-index: 1000;
-    transform: translateX(100%);
-    transition: transform 0.3s ease-in-out;
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .superstarStats.open {
-    transform: translateX(0);
-  }
-  
-  .statsHeader {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .statsName h4, .statsSocial h4 {
-    margin: 0;
-    font-size: 16px;
-    font-weight: bold;
-  }
-  
-  .statsName .dataBig, .statsProfileLeft .dataBig {
+.statsName .dataBig, .statsProfileLeft .dataBig {
     font-size: 24px;
     font-weight: bold;
-  }
-  
-  .statsProfile {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-  }
-  
-  .statsProfileLeft, .statsProfileRight {
-    flex: 1;
-  }
-  
-  .statsHeight, .statsWeight, .statsHometown, .statsSignature, .statsHighlights {
-    margin-bottom: 20px;
-  }
-  
-  .statsProfileLeft .dataBig, .statsProfileLeft .dataSmall, .statsProfileRight .dataSmall {
-    margin: 0;
-  }
-  
-  .statsButton {
-    background-color: #ff0000;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .statsButton:hover {
-    background-color: #cc0000;
-  }
-  
+    text-align: left;
+}
