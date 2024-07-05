@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { UserContext } from '../../contexts/UserContext';
 import wweLogo from '../../assets/wwe_logo.svg'
 import wweNetwork from '../../assets/wwe_network.png';
 import signIn from '../../assets/sign_in.svg';
@@ -8,13 +9,15 @@ import NetworkPromo from '../NetworkPromo/NetworkPromo';
 import SignIn from '../SignIn/SignIn';
 import SignUp from '../SignUp/SignUp';
 import styles from './UserSpace.module.scss';
+import { Link } from 'react-router-dom';
 
 export default function UserSpace() {
     const [showPromo, setShowPromo] = useState(false);
     const [userMenu, setUserMenu] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [showSignIn, setShowSignIn] = useState(false);
     const [showSignUp, setShowSignUp] = useState(false);
+
+    const { isLoggedIn, user, logout } = useContext(UserContext);
 
     function handleMouseEnter() {
         setShowPromo(true);
@@ -63,8 +66,11 @@ export default function UserSpace() {
                         <div className={styles.actions}>
                             {isLoggedIn ? (
                                 <div className={styles.userMenuSignedOut} style={{ display: 'flex' }}>
-                                    <div className={styles.userEmail}>ADD EMAIL FROM DATABASE</div>
-                                    <div className={`${styles.anchor} ${styles.userSignOut}`}>Sign Out</div>
+                                    <div className={styles.userEmail}>{user?.email}</div>
+                                    {user?.email === "admin@wwe.com" && (
+                                        <Link to="/users"><button>All Users</button></Link>
+                                    )}
+                                    <div className={`${styles.anchor} ${styles.userSignOut}`} onClick={logout}>Sign Out</div>
                                 </div>
                             ) : (
                                 <div className={styles.userMenuSignedIn}>

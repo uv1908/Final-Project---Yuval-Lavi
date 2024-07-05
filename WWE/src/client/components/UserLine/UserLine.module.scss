@@ -1,0 +1,15 @@
+.userLine {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+
+    .info {
+        flex: 1;
+    }
+    
+    .delete {
+        margin-left: 10px;
+    }
+}

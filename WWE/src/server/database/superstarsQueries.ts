@@ -36,11 +36,6 @@ export async function getSuperstarWithBrand(id: number) {
     return superstar;
 }
 
-// export async function getBrandById(id: number) {
-//     const [brand] = await runSelect<Brand>("SELECT * FROM brands WHERE id = ?", id);
-//     return brand;
-// }
-
 export async function getCurrentSuperstars(): Promise<Superstar[]> {
     return getSuperstarsByBrand(rawId, smackdownId);
 }
@@ -59,4 +54,8 @@ export async function getHoFSuperstars() {
 
 export async function getAlumniSuperstars() {
     return getSuperstarsByBrand(alumniId, hofId);
+}
+
+export async function deleteById(id: number) {
+    return runModify("DELETE from superstars WHERE id = ?", id);
 }

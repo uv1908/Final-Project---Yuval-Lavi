@@ -1,5 +1,5 @@
 import express from "express";
-import { getAll, getAlumni, getById, getChampions, getCurrent, getFromRaw, getFromSmackdown, getHallOfFame } from "../controllers/superstarsController.js";
+import { deleteSuperstar, getAll, getAlumni, getById, getChampions, getCurrent, getFromRaw, getFromSmackdown, getHallOfFame } from "../controllers/superstarsController.js";
 
 
 const router = express.Router();
@@ -13,5 +13,6 @@ router
     .get("/hof", getHallOfFame)
     .get("/alumni", getAlumni)
     .get("/:id", getById)
+    .delete("/delete/:id", deleteSuperstar)
 
 export default router;

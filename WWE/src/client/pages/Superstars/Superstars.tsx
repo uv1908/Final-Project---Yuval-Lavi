@@ -1,25 +1,23 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import superstarsHeader from '../../assets/superstars_header.png';
 import Superstar from '../../types/superstar';
-import Brand from '../../types/brand';
 import SuperstarBlock from '../../components/SuperstarBlock/SuperstarBlock';
 import ChampionBlock from '../../components/ChampionBlock/ChampionBlock';
 import SuperstarsSearch from '../../components/SuperstarsSearch/SuperstarsSearch';
 import styles from './Superstars.module.scss';
-import SuperstarPage from '../SuperstarPage/SuperstarPage';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../contexts/UserContext';
 
 export default function Superstars() {
-    const [brands, setBrands] = useState<Brand[]>([])
     const [superstars, setSuperstars] = useState<Superstar[]>([]);
     const [champs, setChamps] = useState<Superstar[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [selectedFilter, setSelectedFilter] = useState<string>('current');
-    const [selectedSuperstar, setSelectedSuperstar] = useState<Superstar | null>(null);
-    const [selectedBrand, setSelectedBrand] = useState<Brand | null>(null);
     const [searchQuery, setSearchQuery] = useState<string>('');
-    
+
+    const { user } = useContext(UserContext);
+
     useEffect(() => {
         async function fetchData() {
             try {
@@ -57,7 +55,7 @@ export default function Superstars() {
 
     function getFilteredSuperstars() {
         return superstars.filter(superstar => {
-            const matchesFilter = selectedFilter === 'all' || 
+            const matchesFilter = selectedFilter === 'all' ||
                 (selectedFilter === 'current' && (superstar.brand_id === 1 || superstar.brand_id === 2)) ||
                 (selectedFilter === 'raw' && superstar.brand_id === 1) ||
                 (selectedFilter === 'smackdown' && superstar.brand_id === 2) ||
@@ -68,25 +66,22 @@ export default function Superstars() {
         });
     }
 
-    function getBrandById(id: number): Brand | null {
-        return brands.find(brand => brand.id === id) || null;
-    };
+    async function handleDelete(id: number) {
+        console.log("entered handleDelete");
+        try {
+            setSuperstars(prevSuperstars => prevSuperstars.filter(superstar => superstar.id !== id));
+            const response = await fetch(`/api/superstars/delete/${id}`, {
+                method: 'DELETE',
+            });
 
-    function handleSuperstarClick(superstar: Superstar) {
-        setSelectedSuperstar(superstar);
-        const brand = getBrandById(superstar.brand_id);
-        setSelectedBrand(brand);
+            if (!response.ok) {
+                throw new Error('Failed to delete superstar');
+            }
 
-        console.log(`superstar: ${superstar}`);
-        console.log(`brand: ${brand}`);
-        console.log(`selectedSuperstar: ${selectedSuperstar}`);
-        console.log(`selectedBrand: ${selectedBrand}`);
-    };
-
-    function handleCloseSuperstarPage() {
-        setSelectedSuperstar(null);
-        setSelectedBrand(null);
-    };
+        } catch (error) {
+            console.error('Error deleting superstar:', error);
+        }
+    }
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>{error}</div>;
@@ -101,25 +96,30 @@ export default function Superstars() {
                     {champs.map(champ =>
                         <Link key={champ.id} to={`/superstars/${champ.id}`}>
                             <ChampionBlock
-                                superstar={champ} 
+                                superstar={champ}
                             />
                         </Link>
                     )}
                 </div>
                 <br />
-                <SuperstarsSearch 
-                    selectedFilter={selectedFilter} 
+                <SuperstarsSearch
+                    selectedFilter={selectedFilter}
                     onFilterChange={setSelectedFilter}
                     searchQuery={searchQuery}
-                    onSearchQueryChange={setSearchQuery} 
+                    onSearchQueryChange={setSearchQuery}
                 />
                 <div className={styles.all}>
                     {getFilteredSuperstars().map(superstar =>
-                        <Link key={superstar.id} to={`/superstars/${superstar.id}`}>
-                            <SuperstarBlock
-                                superstar={superstar} 
-                            />
-                        </Link>
+                        <div key={superstar.id} style={{display: "flex", flexDirection: "column"}}>
+                            <Link key={superstar.id} to={`/superstars/${superstar.id}`}>
+                                <SuperstarBlock
+                                    superstar={superstar}
+                                />
+                            </Link>
+                            {user?.email === "admin@wwe.com" && (
+                                <button onClick={() => handleDelete(superstar.id)}>Delete Superstar</button>
+                            )}
+                        </div>
                     )}
                 </div>
             </div>

@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { FormEvent, useContext, useEffect, useState } from 'react';
+import { UserContext } from '../../contexts/UserContext';
 import wweLogo from '../../assets/wwe_logo.svg';
 import exit from '../../assets/exit.svg';
 import toggleHide from '../../assets/toggle_hide.svg';
@@ -20,10 +21,13 @@ export default function SignUp({ onClose, onSwitchToSignIn }: SignUpProps) {
     const [marketingConsentChecked, setMarketingConsentChecked] = useState(false);
     const [errors, setErrors] = useState({ email: ' ', password: ' ', firstName: ' ', lastName: ' ' });
     const [validated, setValidated] = useState(false);
+    const [signUpError, setSignUpError] = useState<string | null>(null);
+
+    const { login } = useContext(UserContext);
 
     useEffect(() => {
-        setValidated(!errors.email && !errors.password && !errors.firstName && !errors.lastName && consentChecked && marketingConsentChecked);
-    }, [email, password, firstName, lastName, errors, consentChecked, marketingConsentChecked]);
+        setValidated(!errors.email && !errors.password && !errors.firstName && !errors.lastName && consentChecked);
+    }, [email, password, firstName, lastName, errors, consentChecked]);
 
     function validateFirstName() {
         if (!firstName) {
@@ -62,9 +66,49 @@ export default function SignUp({ onClose, onSwitchToSignIn }: SignUpProps) {
             setErrors(prev => ({ ...prev, password: '' }));
         }
     }
-    
+
     function togglePasswordVisibility() {
         setPasswordVisible(prev => !prev);
+    }
+
+    async function addUser(event: FormEvent<HTMLButtonElement>) {
+        event.preventDefault();
+        console.log('Adding User:', { firstName, lastName, email, password, marketingConsentChecked });
+        try {
+            const response = await fetch('/api/users/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    first_name: firstName,
+                    last_name: lastName,
+                    email,
+                    password,
+                    marketing: marketingConsentChecked,
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to create user');
+            }
+
+            const data = await response.json();
+            console.log('API Response:', data);
+
+            if (data && data.user && data.user.email) {
+                login(data.user);
+            } else {
+                throw new Error('User data not found in response');
+            }
+
+            setSignUpError(null);
+        } catch (error) {
+            console.error('Error:', error);
+            setSignUpError('Failed to create user');
+        } finally {
+            onClose();
+        }
     }
 
     return (
@@ -77,6 +121,7 @@ export default function SignUp({ onClose, onSwitchToSignIn }: SignUpProps) {
                     </div>
                 </header>
 
+                {signUpError && <h1 className={styles.signUpError}>{signUpError}</h1>}
                 <form className={styles.signUpForm}>
                     <div className={styles.inputGroup}>
                         <input
@@ -127,24 +172,24 @@ export default function SignUp({ onClose, onSwitchToSignIn }: SignUpProps) {
                             onChange={(e) => setPassword(e.target.value)}
                             onBlur={validatePassword}
                         />
-                        <img 
+                        <img
                             src={passwordVisible ? toggleShow : toggleHide}
                             className={styles.inputVision}
-                            height="16" 
-                            width="22" 
+                            height="16"
+                            width="22"
                             alt="Toggle visibility"
-                            onClick={togglePasswordVisibility} 
+                            onClick={togglePasswordVisibility}
                         />
                         <div>
                             {errors.password && <div className={styles.inputError}>{errors.password}</div>}
                         </div>
                     </div>
                     <div className={styles.checkbox}>
-                        <input 
-                            id="signUpConsent" 
-                            type="checkbox" 
-                            className={styles.signUpConsent} 
-                            checked={consentChecked} 
+                        <input
+                            id="signUpConsent"
+                            type="checkbox"
+                            className={styles.signUpConsent}
+                            checked={consentChecked}
                             onChange={() => setConsentChecked(!consentChecked)}
                             required
                         />
@@ -153,10 +198,10 @@ export default function SignUp({ onClose, onSwitchToSignIn }: SignUpProps) {
                         </div>
                     </div>
                     <div className={styles.checkbox}>
-                        <input 
-                            id="marketingConsent" 
-                            type="checkbox" 
-                            className={styles.signUpConsent} 
+                        <input
+                            id="marketingConsent"
+                            type="checkbox"
+                            className={styles.signUpConsent}
                             checked={marketingConsentChecked}
                             onChange={() => setMarketingConsentChecked(!marketingConsentChecked)}
                         />
@@ -164,9 +209,9 @@ export default function SignUp({ onClose, onSwitchToSignIn }: SignUpProps) {
                             <label htmlFor="marketingConsent">I consent to receiving marketing communications from WWE, and its affiliates, about special offers and other products.</label>
                         </div>
                     </div>
-                    <button type="submit" className={`${styles.button} ${styles.buttonPrimary}`} disabled={!validated}>Create Account</button>
+                    <button type="button" className={`${styles.button} ${styles.buttonPrimary}`} disabled={!validated} onClick={addUser}>Create Account</button>
                     <div className={styles.signInLabel}>
-                        Already have an account? <p style={{color: "black"}}>.....</p> 
+                        Already have an account? <p style={{ color: "black" }}>.....</p>
                         <div className={`${styles.anchor} ${styles.bold}`} tabIndex={0} onClick={onSwitchToSignIn}>Sign In</div>
                     </div>
                 </form>

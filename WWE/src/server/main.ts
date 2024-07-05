@@ -1,5 +1,6 @@
 import express from "express";
 import ViteExpress from "vite-express";
+import bodyParser from "body-parser";
 import superstarsRouter from "./routes/superstarsRoute.js";
 import brandsRouter from "./routes/brandsRoute.js";
 import usersRouter from "./routes/usersRoute.js";
@@ -7,6 +8,7 @@ import { globalErrorHandler } from "./handlers/errorHandler.js";
 
 const app = express();
 app.use(express.json());
+app.use(bodyParser.json());
 
 const port = 3000;
 

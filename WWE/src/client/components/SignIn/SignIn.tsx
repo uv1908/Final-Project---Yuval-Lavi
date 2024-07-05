@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { FormEvent, useContext, useEffect, useState } from 'react';
 import wweLogo from '../../assets/wwe_logo.svg';
 import exit from '../../assets/exit.svg';
 import toggleHide from '../../assets/toggle_hide.svg';
 import toggleShow from '../../assets/toggle_show.svg';
 import styles from './SignIn.module.scss';
+import { UserContext } from '../../contexts/UserContext';
 
 interface SignInProps {
     onClose: () => void;
@@ -16,6 +17,8 @@ export default function SignIn({ onClose, onSwitchToSignUp }: SignInProps) {
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState({ email: ' ', password: ' ' });
     const [validated, setValidated] = useState(false);
+
+    const { login } = useContext(UserContext);
 
     useEffect(() => {
         setValidated(!errors.email && !errors.password);
@@ -43,6 +46,29 @@ export default function SignIn({ onClose, onSwitchToSignUp }: SignInProps) {
             setErrors(prev => ({ ...prev, password: 'Password must be at least 6 characters' }));
         } else {
             setErrors(prev => ({ ...prev, password: '' }));
+        }
+    }
+
+    async function handleSignIn(event: FormEvent<HTMLButtonElement>) {
+        event.preventDefault();
+        try {
+            const response = await fetch('/api/users/signin', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password }),
+            });
+            if (!response.ok) {
+                throw new Error('Invalid credentials');
+            }
+            const data = await response.json();
+            login(data.user);
+            console.log('Signed in user:', data.user);
+        } catch (error) {
+            console.error('Error signing in:', error);
+        } finally {
+            onClose();
         }
     }
 
@@ -95,7 +121,7 @@ export default function SignIn({ onClose, onSwitchToSignUp }: SignInProps) {
                     </div>
 
                     <div className={styles.forgotPasswordButton} tabIndex={0}>Forgot my password</div>
-                    <button type="submit" className={`${styles.button} ${styles.buttonPrimary}`} disabled={!validated}>
+                    <button type="button" className={`${styles.button} ${styles.buttonPrimary}`} disabled={!validated} onClick={handleSignIn}>
                         Sign In
                     </button>
 
