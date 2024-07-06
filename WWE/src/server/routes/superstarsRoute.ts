@@ -1,7 +1,6 @@
 import express from "express";
 import { deleteSuperstar, getAll, getAlumni, getById, getChampions, getCurrent, getFromRaw, getFromSmackdown, getHallOfFame } from "../controllers/superstarsController.js";
 
-
 const router = express.Router();
 
 router

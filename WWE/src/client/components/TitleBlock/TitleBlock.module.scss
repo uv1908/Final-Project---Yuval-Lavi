@@ -1,0 +1,32 @@
+.titleDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    color: white;
+
+    img {
+        width: 300px;
+        height: 200px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    &:hover img {
+        transform: scale(1.1);
+    }
+
+    h2, p {
+        font-size: 1rem;
+        font-weight: bold;
+        font-family: "Roboto", "Verdana", "Arial", sans-serif;
+        color: #FFF;
+    }
+
+    h2 {
+        margin-top: 10px;
+    }
+
+    p {
+        margin-top: 5px;
+    }
+}

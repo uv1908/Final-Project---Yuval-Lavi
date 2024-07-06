@@ -1,8 +1,8 @@
 import Superstar from "../../types/superstar";
 import SuperstarStats from "../../components/SuperstarStats/SuperstarStats";
 import styles from "./SuperstarPage.module.scss";
-import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
+import { useState, useEffect, Suspense } from "react";
 
 
 export default function SuperstarPage() {
@@ -29,10 +29,7 @@ export default function SuperstarPage() {
         fetchSuperstarDetails();
     }, [id]);
 
-    // useEffect(() => console.log(isStatsOpen), [isStatsOpen]);
-
     function toggleStats() {
-        // console.log('Toggle Stats Button Clicked');
         setIsStatsOpen(prev => !prev);
     }
 
@@ -54,16 +51,14 @@ export default function SuperstarPage() {
                     )}
                     <div className={styles.nameAndTitle}>
                         <h1 className={styles.name}>{superstar.name}</h1>
-                        <h2 className={styles.title}>{superstar.title}</h2>
+                        <Link to={`/Titles/${superstar.title_id}`}>
+                            <div className={styles.title}>
+                                <img src={superstar.title_img_url} alt={superstar.title} />
+                                <h2>{superstar.title} <span>🡢</span></h2>
+                            </div>
+                        </Link>
                     </div>
                     <div className={styles.championships}>
-                        {/* Map through championships if available */}
-                        {/* {superstar.championships?.map((championship, index) => (
-                            <div key={index} className={styles.championship}>
-                                <img src={championship.img_url} alt={championship.name} className={styles.championshipImg} />
-                                <span>{championship.name}</span>
-                            </div>
-                        ))} */}
                     </div>
                     <button onClick={toggleStats} className={styles.statsButton}>Superstar Stats</button>
                 </div>

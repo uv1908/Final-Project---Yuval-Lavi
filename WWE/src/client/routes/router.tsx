@@ -8,6 +8,7 @@ import Smackdown from "../pages/Smackdown/Smackdown";
 import SuperstarPage from "../pages/SuperstarPage/SuperstarPage";
 import Users from "../pages/Users/Users";
 import AdminRouteGuard from "../components/AdminRouteGuard/AdminRouteGuard";
+import TitlePage from "../pages/TitlePage/TitlePage";
 
 
 const router = createBrowserRouter([{
@@ -20,6 +21,7 @@ const router = createBrowserRouter([{
         { path: "/Shows/smackdown", element: <Smackdown /> },
         { path: "/Superstars", element: <Superstars /> },
         { path: "/Superstars/:id", element: <SuperstarPage /> },
+        { path: "/Titles/:id", element: <TitlePage /> },
         { path: "/users", element: <Users /> },
         // { path: "/users", element: <AdminRouteGuard path="/users" element={<Users />} /> },
     ]

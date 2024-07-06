@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import superstarsHeader from '../../assets/superstars_header.png';
 import Superstar from '../../types/superstar';
 import SuperstarBlock from '../../components/SuperstarBlock/SuperstarBlock';
@@ -6,7 +6,7 @@ import ChampionBlock from '../../components/ChampionBlock/ChampionBlock';
 import SuperstarsSearch from '../../components/SuperstarsSearch/SuperstarsSearch';
 import styles from './Superstars.module.scss';
 import { Link } from 'react-router-dom';
-import { UserContext } from '../../contexts/UserContext';
+import Titles from '../../components/Titles/Titles';
 
 export default function Superstars() {
     const [superstars, setSuperstars] = useState<Superstar[]>([]);
@@ -15,8 +15,6 @@ export default function Superstars() {
     const [error, setError] = useState<string | null>(null);
     const [selectedFilter, setSelectedFilter] = useState<string>('current');
     const [searchQuery, setSearchQuery] = useState<string>('');
-
-    const { user } = useContext(UserContext);
 
     useEffect(() => {
         async function fetchData() {
@@ -66,23 +64,6 @@ export default function Superstars() {
         });
     }
 
-    async function handleDelete(id: number) {
-        console.log("entered handleDelete");
-        try {
-            setSuperstars(prevSuperstars => prevSuperstars.filter(superstar => superstar.id !== id));
-            const response = await fetch(`/api/superstars/delete/${id}`, {
-                method: 'DELETE',
-            });
-
-            if (!response.ok) {
-                throw new Error('Failed to delete superstar');
-            }
-
-        } catch (error) {
-            console.error('Error deleting superstar:', error);
-        }
-    }
-
     if (loading) return <div>Loading...</div>;
     if (error) return <div>{error}</div>;
 
@@ -102,6 +83,8 @@ export default function Superstars() {
                     )}
                 </div>
                 <br />
+                <Titles />
+                <br />
                 <SuperstarsSearch
                     selectedFilter={selectedFilter}
                     onFilterChange={setSelectedFilter}
@@ -116,9 +99,6 @@ export default function Superstars() {
                                     superstar={superstar}
                                 />
                             </Link>
-                            {user?.email === "admin@wwe.com" && (
-                                <button onClick={() => handleDelete(superstar.id)}>Delete Superstar</button>
-                            )}
                         </div>
                     )}
                 </div>

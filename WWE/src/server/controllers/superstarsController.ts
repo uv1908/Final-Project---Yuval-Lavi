@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { getAllChampions, getAllSuperstars, getAlumniSuperstars, getCurrentSuperstars, getHoFSuperstars, getRawSuperstars, getSmackdownSuperstars, getSuperstar, getSuperstarWithBrand, deleteById } from '../database/superstarsQueries.js';
+import { getAllChampions, getAllSuperstars, getAlumniSuperstars, getCurrentSuperstars, getHoFSuperstars, getRawSuperstars, getSmackdownSuperstars, getSuperstar, deleteById, getSuperstarWithBrandAndTitle } from '../database/superstarsQueries.js';
 
 export async function getAll(req: Request, res: Response, next: NextFunction) {
     const superstars = await getAllSuperstars();
@@ -16,7 +16,7 @@ export async function getById(req: Request, res: Response, next: NextFunction) {
 
     if(id) {
         const superstarId = parseInt(id, 10);
-        const superstar = await getSuperstarWithBrand(superstarId);
+        const superstar = await getSuperstarWithBrandAndTitle(superstarId);
         return res.json(superstar);
     }
 }

@@ -1,0 +1,141 @@
+.titleHistory {
+    text-align: left;
+
+    h2 {
+        padding-top: 2rem;
+        border-top: 3px solid #eb1826;
+        margin-bottom: 1.8rem;
+        font-size: 1.8rem;
+        color: #a2a8ab;
+        font-weight: normal;
+    }
+
+    .summary {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #f8f8f8;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .yearsActive {
+        background-color: #333;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 1.5rem;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .statistics {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        margin-bottom: 20px;
+        margin-left: 50px;
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+
+            span {
+                font-size: 0.9rem;
+            }
+
+            p {
+                margin: 0;
+                font-weight: bold;
+                font-size: 1.2rem;
+            }
+
+            h1 {
+                margin: 5px 0;
+                font-size: 2.5rem;
+                color: #333;
+            }
+
+            p:last-of-type {
+                margin-top: -10px;
+                font-size: 1rem;
+            }
+        }
+    }
+
+    .toggleButton {
+        background-color: #ff0000;
+        color: #FFF;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+        user-select: none;
+
+        &:hover {
+            background-color: #cc0000;
+        }
+    }
+
+    .details {
+        width: 100%;
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            background-color: #333;
+            color: #FFF;
+            padding: 10px;
+            font-weight: bold;
+
+            .headerItem {
+                flex: 1;
+                text-align: center;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .sortArrow {
+                margin-left: 5px;
+                font-size: 0.8rem;
+                color: #FFF;
+                cursor: pointer;
+
+                &.active {
+                    color: #eb1826;
+                }
+            }
+        }
+        
+        .holderItem {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+
+            &:last-of-type {
+                border-bottom: none;
+            }
+
+            .champion {
+                flex: 1;
+            }
+
+            .dateOfReign {
+                flex: 1;
+                text-align: center;
+                margin-left: 60px;
+            }
+
+            .daysHeld {
+                flex: 1;
+                text-align: right;
+            }
+        }
+    }
+}
