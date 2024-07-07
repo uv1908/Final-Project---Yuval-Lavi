@@ -1,33 +1,40 @@
 # Project Plan
 
-## API
-- "/wwe"
-
 ## Pages
 - Home ("/")
 - Shows ("/shows")
+- Raw ("/Shows/raw")
+- Smackdown ("/Shows/smackdown")
 - Superstars ("/superstars")
-- News ("/news")
+- SuperstarPage ("/Superstars/:id")
+- TitlePage ("/Titles/:id")
+- Users ("/users")
 
 ## Components
-- Header/NavBar
-- Sign up/Sign in pop ups
-- Videos bar* (Changing for each path)
-- Page header
-- Video grid/flex for home page
-- Trending News section on home page
-- Search bar for Superstars page
+- NavBar (LogoLink, NavLinks, UserSpace)
+- NetworkPromo for UserSpace
+- SignUp & SignIn
+- RawNews & SmackdownNews
+- ShowBlock for Shows
+- SuperstarBlock & ChampionBlock
+- Search bar for Superstars
 - Filter for Superstars
+- SuperstarStats for SuperstarPage
+- Titles (TitleBlock)
+- TitleHistory for TitlePage
+- UserLine for Users
 - Footer
+- OutsideNavLink - For external links
+- AdminRouteGuard - Makes sure only the admin can access /users
 
 ## Collections
 - Users
-- News
 - Superstars
-- Shows
-- Titles*
+- Brands
+- Titles
+- Title_history
 
 ## Other Features
-- Authentication
 - Routing
-- State Management
+- Layout (NavBarWrapper)
+- Context (UserContext)

@@ -44,5 +44,5 @@ export default function SuperstarsSearch({ selectedFilter, onFilterChange, searc
                 </div>
             </div>
         </>
-    )
+    );
 }

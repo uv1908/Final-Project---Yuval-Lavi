@@ -19,5 +19,5 @@ export default function ChampionBlock({ superstar }: ChampionBlockProps) {
                 <p>{title}</p>
             </div>
         </div>
-    )
+    );
 }

@@ -1,11 +1,9 @@
 import "./index.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, RouterProvider } from "react-router-dom";
+import { RouterProvider } from "react-router-dom";
 import { UserProvider } from "./contexts/UserContext";
 import router from "./routes/router";
-import AdminRouteGuard from "./components/AdminRouteGuard/AdminRouteGuard";
-import Users from "./pages/Users/Users";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <React.StrictMode>
@@ -15,9 +13,6 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         />
         <UserProvider>
             <RouterProvider router={router}/>
-            {/* <BrowserRouter>
-                {router}
-            </BrowserRouter> */}
         </UserProvider>
     </React.StrictMode>,
 );

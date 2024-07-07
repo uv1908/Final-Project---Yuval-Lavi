@@ -13,10 +13,15 @@ export async function getNewest(req: Request, res: Response, next: NextFunction)
 }
 
 export async function signIn(req: Request, res: Response, next: NextFunction) {
-    const { email, password } = req.body;
-    const user = await getUserByEmailAndPassword(email, password);
-    if (user) {
-        return res.send({ user });
+    try {
+        const { email, password } = req.body;
+        const user = await getUserByEmailAndPassword(email, password);
+        if (user) {
+            return res.send({ user });
+        }
+        return res.status(401).send({ error: 'Invalid email or password' });
+    } catch (error) {
+        next(error);
     }
 }
 

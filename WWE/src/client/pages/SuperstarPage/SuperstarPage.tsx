@@ -2,7 +2,7 @@ import Superstar from "../../types/superstar";
 import SuperstarStats from "../../components/SuperstarStats/SuperstarStats";
 import styles from "./SuperstarPage.module.scss";
 import { Link, useParams } from "react-router-dom";
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect } from "react";
 
 
 export default function SuperstarPage() {
@@ -51,12 +51,14 @@ export default function SuperstarPage() {
                     )}
                     <div className={styles.nameAndTitle}>
                         <h1 className={styles.name}>{superstar.name}</h1>
-                        <Link to={`/Titles/${superstar.title_id}`}>
-                            <div className={styles.title}>
-                                <img src={superstar.title_img_url} alt={superstar.title} />
-                                <h2>{superstar.title} <span>🡢</span></h2>
-                            </div>
-                        </Link>
+                        {superstar.title && (
+                            <Link to={`/Titles/${superstar.title_id}`}>
+                                <div className={styles.title}>
+                                    <img src={superstar.title_img_url} alt={superstar.title} />
+                                    <h2>{superstar.title} <span>🡢</span></h2>
+                                </div>
+                            </Link>
+                        )}
                     </div>
                     <div className={styles.championships}>
                     </div>

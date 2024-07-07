@@ -5,7 +5,6 @@ interface SearchBarProps {
     onSearchQueryChange: (query: string) => void;
 }
 
-
 export default function SearchBar({ searchQuery, onSearchQueryChange }: SearchBarProps) {
     return (
         <div className={styles.searchBar}>
@@ -18,5 +17,5 @@ export default function SearchBar({ searchQuery, onSearchQueryChange }: SearchBa
             />
             <div className={styles.search}></div>
         </div>
-    )
+    );
 }

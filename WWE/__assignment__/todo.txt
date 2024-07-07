@@ -1,1 +1,0 @@
-- Fix problem with route to /users to only allow admin

@@ -8,5 +8,5 @@ export default function Raw() {
             <img className={styles.headerImg} src={rawHeader} alt='Raw header' />
             <RawNews />
         </>
-    )
+    );
 }

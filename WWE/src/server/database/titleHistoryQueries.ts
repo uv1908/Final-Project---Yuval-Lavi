@@ -1,4 +1,4 @@
-import { runSelect, runModify } from "./dbUtils.js";
+import { runSelect } from "./dbUtils.js";
 
 export async function getTitleHistoryWithDaysHeld(titleId: number) {
     const history = await runSelect(`

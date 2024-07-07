@@ -1,5 +1,4 @@
-import Superstar from "./superstar.js";
-import { runSelect, runModify } from "./dbUtils.js";
+import { runSelect } from "./dbUtils.js";
 import Brand from "./brand.js";
 
 export async function getBrands() {

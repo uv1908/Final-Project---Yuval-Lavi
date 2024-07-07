@@ -17,6 +17,7 @@ export default function SignIn({ onClose, onSwitchToSignUp }: SignInProps) {
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState({ email: ' ', password: ' ' });
     const [validated, setValidated] = useState(false);
+    const [signInError, setSignInError] = useState('');
 
     const { login } = useContext(UserContext);
 
@@ -51,6 +52,8 @@ export default function SignIn({ onClose, onSwitchToSignUp }: SignInProps) {
 
     async function handleSignIn(event: FormEvent<HTMLButtonElement>) {
         event.preventDefault();
+        setSignInError('');
+
         try {
             const response = await fetch('/api/users/signin', {
                 method: 'POST',
@@ -59,16 +62,19 @@ export default function SignIn({ onClose, onSwitchToSignUp }: SignInProps) {
                 },
                 body: JSON.stringify({ email, password }),
             });
+
             if (!response.ok) {
-                throw new Error('Invalid credentials');
+                const errorText = await response.text();
+                throw new Error(`Request failed: ${response.status} ${response.statusText}. ${errorText}`);
             }
+
             const data = await response.json();
             login(data.user);
-            console.log('Signed in user:', data.user);
+            onClose();
+            
         } catch (error) {
             console.error('Error signing in:', error);
-        } finally {
-            onClose();
+            setSignInError("Sorry, we can't find an account with this email address/password. Please try again or create a new account.");
         }
     }
 
@@ -81,6 +87,12 @@ export default function SignIn({ onClose, onSwitchToSignUp }: SignInProps) {
                         <img src={exit} width="16" alt="Close" />
                     </div>
                 </header>
+
+                {signInError && 
+                    <div className={styles.signInError}>
+                        <h1>Error !</h1>
+                        {signInError}
+                    </div>}
 
                 <form className={styles.signInForm}>
                     <div className={styles.inputGroup}>

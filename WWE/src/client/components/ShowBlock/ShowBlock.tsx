@@ -32,5 +32,5 @@ export default function ShowBlock({ brand }: ShowBlockProps) {
                 </p>
             ) : null}
         </div>
-    )
+    );
 }

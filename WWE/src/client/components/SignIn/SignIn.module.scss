@@ -47,6 +47,15 @@ img {
     user-select: none;
 }
 
+.signInError {
+    background-color: #E71F1F;
+    color: #FFF;
+
+    h1 {
+        font-size: 1.8rem;
+    }
+}
+
 .signInForm {
     display: flex;
     flex-direction: column;

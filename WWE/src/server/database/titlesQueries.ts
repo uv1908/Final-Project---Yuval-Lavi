@@ -1,5 +1,5 @@
 import Title from "./title.js";
-import { runSelect, runModify } from "./dbUtils.js";
+import { runSelect } from "./dbUtils.js";
 
 export async function getAllTitles() {
     return runSelect<Title>("SELECT * FROM titles");

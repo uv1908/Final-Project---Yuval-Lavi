@@ -1,11 +1,6 @@
 import { ResultSetHeader } from "mysql2";
 import pool from "./connection.js";
 
-// export async function runSelect<T>(query: string, params?: any): Promise<Partial<T>[]> {
-//     const [results] = await pool.query(query, params);
-//     return results as T[];
-// }
-
 export async function runSelect<T>(query: string, params?: any): Promise<T[]> {
     const [results] = await pool.query(query, params);
     return results as T[];

@@ -45,5 +45,5 @@ export default function Titles() {
                 )}
             </div>
         </div>
-    )
+    );
 }

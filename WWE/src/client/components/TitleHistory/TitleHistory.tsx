@@ -81,9 +81,9 @@ export default function TitleHistory({ titleId }: TitleHistoryProps) {
             </div>
             {showMore && (
                 <div className={styles.details}>
-                    <div className={styles.header}>
+                    <div className={styles.header} onClick={toggleSortOrder}>
                         <div className={styles.headerItem}>Champion</div>
-                        <div className={styles.headerItem} onClick={toggleSortOrder}>Date of Reign</div>
+                        <div className={styles.headerItem}>Date of Reign</div>
                         <span className={`${styles.sortArrow} ${sortOrder === 'desc' ? styles.active : ''}`}>▼</span>
                         <span className={`${styles.sortArrow} ${sortOrder === 'asc' ? styles.active : ''}`}>▲</span>
                     </div>

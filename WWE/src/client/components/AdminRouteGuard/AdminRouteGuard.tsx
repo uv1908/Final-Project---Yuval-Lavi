@@ -1,21 +1,20 @@
-import React, { ReactNode, useContext } from 'react';
-import { Route, Navigate, RouteProps } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Navigate } from 'react-router-dom';
 import { UserContext } from '../../contexts/UserContext';
 
-
-interface AdminRouteProps {
-    path: string;
-    element: ReactNode;
+interface ProtectedRouteProps {
+    component: React.ComponentType<any>;
+    [key: string]: any;
 }
 
-export default function AdminRouteGuard({ path, element }: AdminRouteProps) {
+const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ component: Component, ...rest }) => {
     const { user } = useContext(UserContext);
 
-    const isAdmin = user?.email === 'admin@wwe.com';
-
-    if (!isAdmin) {
+    if (user?.email !== 'admin@wwe.com') {
         return <Navigate to="/" replace />;
     }
 
-    return <Route path={path} element={element} />;
+    return <Component {...rest} />;
 };
+
+export default ProtectedRoute;

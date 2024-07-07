@@ -1,4 +1,4 @@
-import { createBrowserRouter, Route, Routes } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import NavBarWrapper from "../layout/NavBarWrapper/NavBarWrapper";
 import Home from "../pages/Home/Home";
 import Shows from "../pages/Shows/Shows";
@@ -9,7 +9,6 @@ import SuperstarPage from "../pages/SuperstarPage/SuperstarPage";
 import Users from "../pages/Users/Users";
 import AdminRouteGuard from "../components/AdminRouteGuard/AdminRouteGuard";
 import TitlePage from "../pages/TitlePage/TitlePage";
-
 
 const router = createBrowserRouter([{
     path: "/",
@@ -22,26 +21,8 @@ const router = createBrowserRouter([{
         { path: "/Superstars", element: <Superstars /> },
         { path: "/Superstars/:id", element: <SuperstarPage /> },
         { path: "/Titles/:id", element: <TitlePage /> },
-        { path: "/users", element: <Users /> },
-        // { path: "/users", element: <AdminRouteGuard path="/users" element={<Users />} /> },
+        { path: "/users", element: <AdminRouteGuard component={Users} /> },
     ]
 }]);
-
-// const router = (
-//     <Routes>
-//         <Route
-//             path="/"
-//             element={<NavBarWrapper />}
-//         >
-//             <Route path="/" element={<Home />} />
-//             <Route path="/Shows" element={<Shows />} />
-//             <Route path="/Shows/raw" element={<Raw />} />
-//             <Route path="/Shows/smackdown" element={<Smackdown />} />
-//             <Route path="/Superstars" element={<Superstars />} />
-//             <Route path="/Superstars/:id" element={<SuperstarPage />} />
-//             <Route path="/users" element={<AdminRouteGuard path="/users" element={<Users />} />} />
-//         </Route>
-//     </Routes>
-// );
 
 export default router;

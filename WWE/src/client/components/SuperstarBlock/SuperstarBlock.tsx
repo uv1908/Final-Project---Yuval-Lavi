@@ -13,5 +13,5 @@ export default function SuperstarBlock({ superstar }: SuperstarBlockProps) {
                 {superstar.name}
             </div>
         </div>
-    )
+    );
 }

@@ -4,7 +4,7 @@ import wweLogo from '../../assets/wwe_logo.svg';
 import exit from '../../assets/exit.svg';
 import toggleHide from '../../assets/toggle_hide.svg';
 import toggleShow from '../../assets/toggle_show.svg';
-import styles from './SignUp.module.scss'
+import styles from './SignUp.module.scss';
 
 interface SignUpProps {
     onClose: () => void;
@@ -194,7 +194,11 @@ export default function SignUp({ onClose, onSwitchToSignIn }: SignUpProps) {
                             required
                         />
                         <div className={styles.checkboxLabel}>
-                            <label htmlFor="signUpConsent">I am 18 years of age or older and agree with the <a href="https://www.wwe.com/page/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and <a href="https://www.wwe.com/page/terms-and-conditions" target="_blank" rel="noopener noreferrer">Terms of Use</a>.</label>
+                            <label htmlFor="signUpConsent">
+                                {consentChecked && (
+                                    <span className={styles.checkmark}></span>
+                                )}
+                                I am 18 years of age or older and agree with the <a href="https://www.wwe.com/page/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and <a href="https://www.wwe.com/page/terms-and-conditions" target="_blank" rel="noopener noreferrer">Terms of Use</a>.</label>
                         </div>
                     </div>
                     <div className={styles.checkbox}>
@@ -206,7 +210,11 @@ export default function SignUp({ onClose, onSwitchToSignIn }: SignUpProps) {
                             onChange={() => setMarketingConsentChecked(!marketingConsentChecked)}
                         />
                         <div className={styles.checkboxLabel}>
-                            <label htmlFor="marketingConsent">I consent to receiving marketing communications from WWE, and its affiliates, about special offers and other products.</label>
+                            <label htmlFor="marketingConsent">
+                                {marketingConsentChecked && (
+                                    <span className={styles.checkmark}></span>
+                                )}
+                                I consent to receiving marketing communications from WWE, and its affiliates, about special offers and other products.</label>
                         </div>
                     </div>
                     <button type="button" className={`${styles.button} ${styles.buttonPrimary}`} disabled={!validated} onClick={addUser}>Create Account</button>
@@ -217,5 +225,5 @@ export default function SignUp({ onClose, onSwitchToSignIn }: SignUpProps) {
                 </form>
             </dialog>
         </>
-    )
+    );
 }
