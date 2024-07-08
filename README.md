@@ -9,6 +9,8 @@ pages that I made leading to the localhost.
 
 ## Tables in MySql:
 
+I have added a folder "wwe mySql database" for all the data in the tables
+
 - wwe.users:
             id, first_name, last_name, email, password, marketing
 
