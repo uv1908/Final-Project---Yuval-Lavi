@@ -1,29 +1,63 @@
-# Project Details
+# WWE Project
+
+## Overview
 
 Based on website https://www.wwe.com
 
 I took the home page (relevant for 7/7/24), shows page, superstars page, individual superstar pages,
 title pages and 2 shows pages.
-Some of the links in the project lead to external links in the real wwe.com website. The links to the 
-pages that I made leading to the localhost.
 
-## Tables in MySql:
+I've made a database with tables of Users, Superstars, Brands, Titles and Title histories. Each table includes all information regarding the type such as name, unique id, image urls and more.
 
-I have added a folder "wwe mySql database" for all the data in the tables
+When fetching title_history I use a function to bring the number of days a champion held the title, in case of current champion, it will return the number of days passed from the date won to the current data, so it is adding a day every day.
 
-- wwe.users:
-            id, first_name, last_name, email, password, marketing
+Some of the links in the project lead to external links in the real https://www.wwe.com website. The links to the pages that I made leading to the localhost.
 
-            admin: '1', 'WWE', 'Admin', 'admin@wwe.com', 'admin123', '0'
+I have added a folder with preview images of the site at wweProjectImages folder.
 
-- wwe.superstars:
-id, name, height, weight, hometown, signature_move, career_highlights, img_url, title, brand_id
+## Prerequisites
 
-- wwe.brands:
-id, name, img_url, brand_header
+- [Node.js](https://nodejs.org/)
+- [MySQL](https://www.mysql.com/)
 
-- wwe.titles:
-id, name, img_url, current_holder, years_active, header_url
+## Setup Instructions
 
-- wwe.title_history:
-id, title_id, superstar_id, date_won, date_lost
+### Step 1: Clone the Repository
+
+Clone the repository to your local machine using the following command:
+
+```sh
+git clone https://github.com/uv1908/Final-Project---Yuval-Lavi.git
+cd Final-Project---Yuval-Lavi
+```
+
+### Step 2: Install Dependencies
+
+```sh
+npm install
+```
+
+### Step 3: Set Up the MySQL Database
+
+```
+CREATE DATABASE wwe;
+USE wwe;
+
+Import my SQL files
+
+mysql -u root -p wwe < WWEMySqlDatabase/wwe.users.sql
+mysql -u root -p wwe < WWEMySqlDatabase/wwe.superstars.sql
+mysql -u root -p wwe < WWEMySqlDatabase/wwe.brands.sql
+mysql -u root -p wwe < WWEMySqlDatabase/wwe.titles.sql
+mysql -u root -p wwe < WWEMySqlDatabase/wwe.title_history.sql
+```
+
+### Step 5: Run Application
+
+```
+npm start
+```
+
+### Finally
+
+Open http://localhost:3000 on your browser
