@@ -1,5 +1,12 @@
 # WWE Project
 
+<div display="flex">
+<img src="wweProjectImages\home_page_with_navBar.png" width = "700">
+<img src="wweProjectImages\superstars_page_header_and_champions.png" width = "700">
+<img src="wweProjectImages\superstars.png" width = "700">
+<img src="wweProjectImages\superstar_page.png" width = "700">
+<img src="wweProjectImages\title_page.png" width = "700">
+
 ## Overview
 
 Based on website https://www.wwe.com
@@ -61,3 +68,9 @@ npm start
 ### Finally
 
 Open http://localhost:3000 on your browser
+
+
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
